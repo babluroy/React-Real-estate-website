@@ -1,0 +1,258 @@
+h2 {
+  color: #012970;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+.hero-section {
+  background: 
+  /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(34, 30, 30, 0.45),
+      rgba(71, 58, 58, 0.45)
+    ),
+    /* bottom, image */ url("pictures/cover.jpg");
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media only screen and (min-width: 600px) {
+  .hero-section {
+    min-height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+}
+
+.hero-pic {
+  margin-top: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 25px;
+    text-align: center;
+  }
+}
+
+.featured-images {
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.section-header {
+  margin: 10px 0 10px 0;
+  padding: 0;
+  font-size: 34px;
+  line-height: 42px;
+  font-weight: 700;
+  color: #012970;
+}
+.host-btn {
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+}
+.become-host {
+  background-color: rgb(36, 31, 48);
+}
+.become-host-card-header {
+  background-color: #ccc;
+  font-size: large;
+}
+.done-img {
+  max-width: 500px;
+}
+.h4 {
+  color: #012970;
+}
+@media only screen and (max-width: 600px) {
+  .done-img {
+    max-width: 250px;
+  }
+  .successful-post-text {
+    margin-top: 50px;
+  }
+}
+
+.profile-thumb {
+  min-height: 30vh;
+  max-height: 30vh;
+}
+
+.card-header-create-profile {
+  background-color: #ccc;
+  min-height: 50px;
+  padding: 10px;
+}
+.profile-image-div {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+}
+@media only screen and (min-width: 600px) {
+  .dropdown-menu-bar {
+    margin-left: 100px;
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  background-size: 100%;
+}
+
+.my-listings-thumbnail {
+  min-height: 250px;
+  max-height: 250px;
+}
+.create-profile-button {
+  margin-left: 50%;
+}
+
+/* spinner */
+.sk-cube-grid {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #333;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%,
+  70%,
+  100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%,
+  70%,
+  100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+/* end of spinner */
+.caraousel-slider {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.d-block {
+  max-height: 500px;
+}
+.card-booking-form-header {
+  background-color: rgb(46, 44, 44);
+  color: #fff;
+  font-weight: 600;
+}
+.heading-p {
+  color: #012970;
+}
+.category-cards {
+  min-height: 370px;
+}
+
+.find-roommates-content {
+  background-color: #ccc;
+  padding: 20px;
+}
+.find-roommates-content-cards {
+  min-height: 450px;
+}
+.find-roommates-content-cards-pic {
+  max-height: 250px;
+}
+.footer {
+  background-color: #000;
+  padding: 20px;
+  color: #fff;
+}
+.navbar {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 100;
+}
+.all-properties {
+  margin-top: 100px;
+}
+.auth-btn {
+  margin-top: 200px;
+}
+.mr-top {
+  margin-top: 200px;
+}
+.mr-top-2 {
+  margin-top: 150px;
+}
+.mr-top-slider {
+  margin-top: 70px;
+}
