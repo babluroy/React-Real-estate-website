@@ -2,7 +2,7 @@ import firebase from 'firebase'
 import "firebase/storage"
 
 var firebaseConfig = {
-//  Paste your config here
+  
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

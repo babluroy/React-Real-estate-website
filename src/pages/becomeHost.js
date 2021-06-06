@@ -1,6 +1,6 @@
 import React, { useState,useEffect} from "react";
 import {Link} from 'react-router-dom'
-import { Form, Col, Button, Container, Card } from "react-bootstrap";
+import { Form, Col, Button, Container, Card} from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import {Redirect} from 'react-router-dom'
 import "react-toastify/dist/ReactToastify.css";
@@ -9,6 +9,7 @@ import { database, storage } from "../config";
 import firebase from 'firebase'
 import imageCompression from 'browser-image-compression';
 import {imageConfig} from '../utils/imageConfig'
+
 
 export default function BecomeHost() {
 
@@ -257,6 +258,9 @@ export default function BecomeHost() {
   }
 
   
+
+
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     database.ref("properties").push({
@@ -318,9 +322,16 @@ export default function BecomeHost() {
         draggable
       />
      
-        <Card className="become-host-card">
-        <Card.Header className="text-center font-weight-bold become-host-card-header">Become a Host</Card.Header>
-          <Card.Body>
+        <Card className="become-host-card main">
+
+        {/* <Card.Header className="h3">   
+        Become a Host
+        </Card.Header> */}
+      
+          <Card.Body className="container">
+
+          <h2 className="mt-3">General Details</h2>
+
             <Form onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGriName">
@@ -386,6 +397,8 @@ export default function BecomeHost() {
                   />
                 </Form.Group>
               </Form.Row>
+
+              <h2 className="mt-3">Specific Details</h2>
 
               <Form.Group controlId="formGridAddress2">
                 <Form.Label>Property Title</Form.Label>
@@ -483,17 +496,30 @@ export default function BecomeHost() {
               <Form.Label>Upload Property Images</Form.Label>
               <br />
               <Form.Row>
-                <Form.Group as={Col} lg={3} md={3} sm={3}>
-                  <Form.File onChange={uploadImageFirst} />
+
+                <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
+                <Form.Control type="file" onChange={uploadImageFirst} />
+                  <span className='button'>Upload Property Image</span>
+                  <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
-                <Form.Group as={Col} lg={3} md={3} sm={3}>
-                  <Form.File onChange={uploadImageSecond}/>
+                
+                <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
+                  <Form.Control type="file" onChange={uploadImageSecond} />
+                  <span className='button'>Upload Property Image</span>
+                  <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
-                <Form.Group as={Col} lg={3} md={3} sm={3}>
-                  <Form.File onChange={uploadImageThird} />
+
+                <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
+                  <Form.Control type="file" onChange={uploadImageThird} />
+                  <span className='button'>Upload Property Image</span>
+                  <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
-                <Form.Group as={Col} lg={3} md={3} sm={3}>
-                  <Form.File onChange={uploadImageFourth}/>
+
+
+                <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
+                  <Form.Control type="file" onChange={uploadImageFourth}/>
+                  <span className='button'>Upload Property Image</span>
+                  <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
               </Form.Row>
 
@@ -506,6 +532,94 @@ export default function BecomeHost() {
                   onChange={(e) => setAbout(e.target.value)}
                 />
               </Form.Group>
+
+              {/* TODO: onchange method */}
+
+              <h2 className="mt-3">Features</h2>
+
+              <Form.Row>
+                <Form.Group as={Col} lg={3} md={3} sm={12} controlId="livingRoom">
+                  <Form.Label>Living Room</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="livingRoom"
+                    // onChange={handleChange}
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group as={Col} lg={3} md={3} sm={12} controlId="internet">
+                  <Form.Label>Internet</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="internet"
+                    // onChange={handleChange}
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group as={Col} lg={3} md={3} sm={12} controlId="gym">
+                  <Form.Label>Gym</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="gym"
+                    // onChange={handleChange}
+                  >
+                   <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group as={Col} lg={3} md={3} sm={12} controlId="parking">
+                  <Form.Label>Parking Space</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="parking"
+                    // onChange={handleChange}
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Form.Control>
+                </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                <Form.Group as={Col} lg={4} md={4} sm={12} controlId="ac">
+                  <Form.Label>Air Conditioner</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="ac"
+                    // onChange={handleChange}
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group as={Col} lg={4} md={4} sm={12} controlId="security">
+                  <Form.Label>Gated Security</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="security"
+                    // onChange={handleChange}
+                  >
+                   <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group as={Col} lg={4} md={4} sm={12} controlId="waterSupply">
+                  <Form.Label>Water Supply</Form.Label>
+                  <Form.Control
+                    as="select"
+                    name="waterSupply"
+                    // onChange={handleChange}
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </Form.Control>
+                </Form.Group>
+                </Form.Row>
+
+
 
               <Button variant="primary" className="btn btn-block" type="submit">
                 Post My Property

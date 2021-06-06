@@ -15,6 +15,27 @@ export default function NavigationBar({companyName="DevBud"}) {
 
     //Authstate
     const [authState, setAuthState ] = useState(null);
+    //Transparent scroll navbar state
+    const [pos, setPos] = useState("top")
+
+    useEffect (()=>{     
+      var path = window.location.pathname
+
+      if(path == "/home"){
+      document.addEventListener("scroll", e => {
+          let scrolled = document.scrollingElement.scrollTop;
+  
+          if (scrolled >= 5){
+             setPos("moved")
+          } else {
+             setPos("top")
+          }
+      })
+    }else{
+      setPos("moved")
+    }
+  },[])
+    
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged(function (user) {
@@ -37,19 +58,26 @@ const Logout = () => {
 }
 
 
+
   return (
-  <Navbar bg="dark" expand="lg" className="navbar">
-  <Link to="/"><Navbar.Brand  className="text-light">{companyName}</Navbar.Brand></Link>
+  <Navbar bg="" expand="lg" className="navbar" 
+  style={{backgroundColor: pos === "top" ? "" : "rgb(227, 239, 240)" }}
+  >
+  <Link to="/"><Navbar.Brand  className={pos === "top" ? "text-light brand-name": "text-dark brand-name"}>{companyName}</Navbar.Brand></Link>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav text-light">
-    <Nav className="mr-auto text-light">
-      <Nav.Link as={Link} to="/" className="text-light">Home</Nav.Link>
-      <Nav.Link as={Link} to="/personal-rooms" className="text-light">Personal Rooms</Nav.Link>
-      <Nav.Link as={Link} to="/family-apartments" className="text-light pr-4">Family Apartments</Nav.Link>
-      <Nav.Link as={Link} to="/vacation-villas" className="text-light pr-4">Villas for Vacation</Nav.Link>
+    <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto">
+      <Nav.Link as={Link} to="/"
+      className={pos === "top" ? "text-light": "text-dark"}
+      >Home</Nav.Link>
+      <Nav.Link as={Link} to="/personal-rooms" className={pos === "top" ? "text-light": "text-dark"}>Personal Rooms</Nav.Link>
+      <Nav.Link as={Link} to="/family-apartments" className={pos === "top" ? "text-light": "text-dark"}>Family Apartments</Nav.Link>
+      <Nav.Link as={Link} to="/vacation-villas" className={pos === "top" ? "text-light": "text-dark"}>Villas for Vacation</Nav.Link>
     </Nav>
     <Navbar.Collapse className="justify-content-end">
-    <NavDropdown title={<FontAwesomeIcon icon={faUserCircle} size="lg" className="text-light dropdown-menu-bar" spin/>}>
+    <NavDropdown title={<FontAwesomeIcon icon={faUserCircle} size="lg"
+    className={pos === "top" ? "text-light dropdown-menu-bar": "text-dark dropdown-menu-bar"}
+    spin/>}>
       {authState ? (
         <>
         <Container>
@@ -75,7 +103,7 @@ const Logout = () => {
     {authState ? (
     <>
     <Navbar.Text>
-      <Link to="/become-host"><Button className="btn host-btn">Become a Host</Button></Link>
+      <Link to="/become-host"><Button className="host-btn" variant="outline-primary">Become a Host</Button></Link>
     </Navbar.Text>
     </>
       ):""}

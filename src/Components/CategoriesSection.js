@@ -15,7 +15,7 @@ export default function CategoriesSection() {
         <Row className="mt-5">
         <Col sm={12} md={4} lg={4}>
           <Link to="/personal-rooms"><Card className="category-cards text-dark mt-3">
-            <Card.Img variant="top" src={personalRoomsPic} />
+            <Card.Img variant="top" src={personalRoomsPic} className="category-img"/>
             <Card.Body>
               <Card.Title>Personal Rooms</Card.Title>
               <Card.Text>
@@ -26,7 +26,7 @@ export default function CategoriesSection() {
           </Col>
           <Col sm={12} md={4} lg={4}>
           <Link to="/family-apartments"><Card className="category-cards text-dark mt-3">
-            <Card.Img variant="top" src={familyApartments} />
+            <Card.Img variant="top" src={familyApartments} className="category-img"/>
             <Card.Body>
               <Card.Title>Family Apartments</Card.Title>
               <Card.Text>
@@ -37,7 +37,7 @@ export default function CategoriesSection() {
           </Col>
           <Col sm={12} md={4} lg={4}>
           <Link to="/vacation-villas"><Card className="category-cards text-dark mt-3">
-            <Card.Img variant="top" src={villas} />
+            <Card.Img variant="top" src={villas} className="category-img"/>
             <Card.Body>
               <Card.Title>Villas For Vacation</Card.Title>
               <Card.Text>

@@ -17,10 +17,13 @@ import MyHomeBookings from './pages/MyHomeBookings';
 import PersonalRooms from './pages/PersonalRooms';
 import FamilyApartments from './pages/FamilyApartments';
 import VacationVillas from './pages/VacationVillas';
+import ScrollToTop from './Components/ScrollToTop';
 
 
 const routing = (
+  
   <Router>
+  <ScrollToTop/>
     <Route exact path="/" component={App}/>
     <Route exact path="/become-host" component={becomeHost}/>
     <Route exact path="/signup" component={Signup}/>

@@ -1,5 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crete+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 h2 {
-  color: #012970;
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  color: #163879;
+  letter-spacing: 2px;
+}
+
+.brand-name {
+  font-family: "Lobster", cursive;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.hero-section {
+  z-index: 100;
+}
+
+.hero-text {
+  font-family: "Crete Round", serif;
+}
+.navbar {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 100;
+}
+
+.navbar {
+  font-family: "Roboto", sans-serif;
+  font-weight: 540;
 }
 
 a:link {
@@ -219,7 +257,12 @@ a:link {
 .category-cards {
   min-height: 370px;
 }
-
+.category-cards:hover {
+  background-color: #51e1ed;
+}
+.category-img {
+  height: 220px;
+}
 .find-roommates-content {
   background-color: #ccc;
   padding: 20px;
@@ -235,12 +278,7 @@ a:link {
   padding: 20px;
   color: #fff;
 }
-.navbar {
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
-  z-index: 100;
-}
+
 .all-properties {
   margin-top: 100px;
 }
@@ -255,4 +293,63 @@ a:link {
 }
 .mr-top-slider {
   margin-top: 70px;
+}
+/* lg */
+@media only screen and (min-width: 600px) {
+  .main {
+    margin-top: 70px;
+  }
+}
+/* sm */
+@media only screen and (max-width: 600px) {
+  .main {
+    margin-top: 50px;
+  }
+}
+
+/*input file*/
+.file-input {
+  display: inline-block;
+  text-align: left;
+  background: #fff;
+  padding: 16px;
+  width: 350px;
+  position: relative;
+  border-radius: 3px;
+}
+
+.file-input > [type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.file-input > .button {
+  display: inline-block;
+  cursor: pointer;
+  background: rgb(119, 0, 255);
+  padding: 8px 16px;
+  border-radius: 2px;
+  margin-right: 8px;
+  color: #fff;
+}
+
+.file-input:hover > .button {
+  background: rgb(40, 136, 231);
+  color: white;
+}
+
+.file-input > .label {
+  color: #333;
+  white-space: nowrap;
+  opacity: 0.3;
+}
+
+.file-input.-chosen > .label {
+  opacity: 1;
 }

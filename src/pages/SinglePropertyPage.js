@@ -19,10 +19,10 @@ import {
   faUser,
   faArrowCircleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { v4 as uuidv4 } from "uuid";
 import firebase from "firebase";
 import { auth, database } from "../config";
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 import ReadReviews from '../Components/ReadReviews'
 
 
@@ -266,7 +266,7 @@ export default function SinglePropertyPage() {
                     </Row>
 
                     {/*TODO*/}
-                    <iframe
+                    {/* <iframe
                       className="my-3"
                       width="100%"
                       height="300"
@@ -275,7 +275,7 @@ export default function SinglePropertyPage() {
                       marginheight="0"
                       marginwidth="0"
                       src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;t=&amp;z=11&amp;ie=UTF8&amp;iwloc=B&amp;output=embed&amp;q=delhi"
-                    ></iframe>
+                    ></iframe> */}
 
                     <hr />
                     
