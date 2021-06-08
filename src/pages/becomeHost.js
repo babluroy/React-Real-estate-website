@@ -26,6 +26,15 @@ export default function BecomeHost() {
   const [per_year, setPer_year] = useState("");
   const [bedrooms, setBedrooms] = useState("");
   const [bathrooms, setBathrooms] = useState("");
+
+  const [livingRoom, setLivingRoom] = useState("");
+  const [internet, setInternet] = useState("");
+  const [gym, setGym] = useState("");
+  const [parking, setParking] = useState("");
+  const [ac, setAc]= useState("");
+  const [gatedSecurity, setGatedSecurity] = useState("");
+  const [waterSupply, setWaterSupply] = useState("");
+
   const [about, setAbout] = useState("");
   const [userUid, setUserUid] = useState("")
   const [imageOneURL, setImageOneURL] = useState("");
@@ -257,6 +266,35 @@ export default function BecomeHost() {
     setCategory(event.target.value);
   }
 
+   function handleChangeLivingRoom(event) {
+    setLivingRoom(event.target.value);
+  }
+
+  function handleChangeInternet(event) {
+    setInternet(event.target.value);
+  }
+
+  function handleChangeGym(event) {
+    setGym(event.target.value);
+  }
+
+  function handleChangeParkingSpace(event) {
+    setParking(event.target.value);
+  }
+
+  function handleChangeAc(event) {
+    setAc(event.target.value);
+  }
+
+  function handleChangeSecurity(event) {
+   setGatedSecurity(event.target.value);
+  }
+
+  function handleChangeWaterSupply(event) {
+    setWaterSupply(event.target.value);
+  }
+
+
   
 
 
@@ -276,6 +314,13 @@ export default function BecomeHost() {
       per_year: per_year,
       bedrooms: bedrooms,
       bathrooms: bathrooms,
+      livingRoom: livingRoom,
+      internet: internet,
+      gym: gym,
+      parking: parking,
+      ac: ac,
+      gatedSecurity: gatedSecurity,
+      waterSupply: waterSupply,
       about: about,
       userUid: userUid,
       imageOneURL: imageOneURL,
@@ -341,7 +386,7 @@ export default function BecomeHost() {
                     placeholder="Enter Your Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                  />
+                  required/>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridEmail">
@@ -351,7 +396,7 @@ export default function BecomeHost() {
                     placeholder="E-mail"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                  />
+                  required/>
                 </Form.Group>
               </Form.Row>
 
@@ -386,7 +431,7 @@ export default function BecomeHost() {
                     placeholder="1234 Main St"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                  />
+                  required/>
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridCity">
@@ -394,7 +439,7 @@ export default function BecomeHost() {
                   <Form.Control
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                  />
+                  required/>
                 </Form.Group>
               </Form.Row>
 
@@ -406,7 +451,7 @@ export default function BecomeHost() {
                   placeholder="Eg. Amazing Apartment With Sea View"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                />
+                required/>
               </Form.Group>
 
               <Form.Row>
@@ -423,7 +468,7 @@ export default function BecomeHost() {
                     placeholder="Eg. 1500"
                     value={per_night}
                     onChange={(e) => setPer_night(e.target.value)}
-                  />
+                  required/>
                 </Form.Group>
                 <Form.Group
                   as={Col}
@@ -480,7 +525,7 @@ export default function BecomeHost() {
                     placeholder="Eg. 2"
                     value={bedrooms}
                     onChange={(e) => setBedrooms(e.target.value)}
-                  />
+                  required/>
                 </Form.Group>
                 <Form.Group as={Col} lg={6} md={6} sm={12}>
                   <Form.Label>Bathrooms</Form.Label>
@@ -489,7 +534,7 @@ export default function BecomeHost() {
                     placeholder="Eg. 1"
                     value={bathrooms}
                     onChange={(e) => setBathrooms(e.target.value)}
-                  />
+                  required/>
                 </Form.Group>
               </Form.Row>
 
@@ -498,26 +543,26 @@ export default function BecomeHost() {
               <Form.Row>
 
                 <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
-                <Form.Control type="file" onChange={uploadImageFirst} />
+                <Form.Control type="file" onChange={uploadImageFirst} required/>
                   <span className='button'>Upload Property Image</span>
                   <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
                 
                 <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
-                  <Form.Control type="file" onChange={uploadImageSecond} />
+                  <Form.Control type="file" onChange={uploadImageSecond} required/>
                   <span className='button'>Upload Property Image</span>
                   <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
 
                 <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
-                  <Form.Control type="file" onChange={uploadImageThird} />
+                  <Form.Control type="file" onChange={uploadImageThird} required/>
                   <span className='button'>Upload Property Image</span>
                   <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
 
 
                 <Form.Group as={Col} lg={3} md={3} sm={3} className="file-input">
-                  <Form.Control type="file" onChange={uploadImageFourth}/>
+                  <Form.Control type="file" onChange={uploadImageFourth} required/>
                   <span className='button'>Upload Property Image</span>
                   <span className='label' data-js-label>No file selected</span>
                 </Form.Group>
@@ -530,12 +575,11 @@ export default function BecomeHost() {
                   rows={3}
                   value={about}
                   onChange={(e) => setAbout(e.target.value)}
-                />
+                  required/>
               </Form.Group>
 
-              {/* TODO: onchange method */}
 
-              <h2 className="mt-3">Features</h2>
+              <h2 className="mt-3">Amenities</h2>
 
               <Form.Row>
                 <Form.Group as={Col} lg={3} md={3} sm={12} controlId="livingRoom">
@@ -543,8 +587,9 @@ export default function BecomeHost() {
                   <Form.Control
                     as="select"
                     name="livingRoom"
-                    // onChange={handleChange}
+                    onChange={handleChangeLivingRoom}
                   >
+                    <option>Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </Form.Control>
@@ -554,8 +599,9 @@ export default function BecomeHost() {
                   <Form.Control
                     as="select"
                     name="internet"
-                    // onChange={handleChange}
+                    onChange={handleChangeInternet}
                   >
+                    <option>Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </Form.Control>
@@ -565,8 +611,9 @@ export default function BecomeHost() {
                   <Form.Control
                     as="select"
                     name="gym"
-                    // onChange={handleChange}
+                    onChange={handleChangeGym}
                   >
+                  <option>Select</option>
                    <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </Form.Control>
@@ -576,8 +623,9 @@ export default function BecomeHost() {
                   <Form.Control
                     as="select"
                     name="parking"
-                    // onChange={handleChange}
+                    onChange={handleChangeParkingSpace}
                   >
+                  <option>Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </Form.Control>
@@ -589,8 +637,9 @@ export default function BecomeHost() {
                   <Form.Control
                     as="select"
                     name="ac"
-                    // onChange={handleChange}
+                    onChange={handleChangeAc}
                   >
+                  <option>Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </Form.Control>
@@ -600,8 +649,9 @@ export default function BecomeHost() {
                   <Form.Control
                     as="select"
                     name="security"
-                    // onChange={handleChange}
+                    onChange={handleChangeSecurity}
                   >
+                  <option>Select</option>
                    <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </Form.Control>
@@ -611,8 +661,9 @@ export default function BecomeHost() {
                   <Form.Control
                     as="select"
                     name="waterSupply"
-                    // onChange={handleChange}
+                    onChange={handleChangeWaterSupply}
                   >
+                  <option>Select</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                   </Form.Control>

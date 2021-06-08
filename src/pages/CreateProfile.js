@@ -22,10 +22,14 @@ export default function CreateProfile() {
     //submit status
     const [submit, setSubmit] = useState("")
     const [profileCheck, setProfileCheck] = useState("")
-    console.log(profileCheck)
+    const [filter, setFilter] = useState("")
 
      //Authstate
      const [authState, setAuthState ] = useState("");
+
+     useEffect(()=>{
+       setFilter(city + homeSearch)
+     },[city,homeSearch])
 
      useEffect(() => {
          firebase.auth().onAuthStateChanged(function (user) {
@@ -97,6 +101,7 @@ export default function CreateProfile() {
           email: email,
           userUid:userUid,
           thumbnail: thumbnail,
+          filter: filter,
         });
         setSubmit("Submitted")
       };

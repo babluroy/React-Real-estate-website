@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
 import {
   Row,
   Col,
   Card,
-  Button,
   Container,
-  Modal,
-  handleClose,
-  show,
 } from "react-bootstrap";
+import Navbar from '../Components/navbar'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBed,
-  faShower,
   faMapMarkerAlt,
-  faRupeeSign,
+  faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import firebase from "firebase";
 import { auth, database } from "../config";
 
-export default function MyListings() {
+export default function PublicProfiles() {
   //Authstate
   const [authState, setAuthState] = useState(null);
   const [userUid, setUserUid] = useState(null);
-  const [listingsCheck, setListingsCheck] = useState(null);
+  const [profilesCheck, setProfilesCheck] = useState(null);
   //snapshots
-  const [listings, setListings] = useState([]);
+  const [profiles, setProfiles] = useState([]);
    //spinner
    const [loading, setLoading] = useState(true)
+
+   const [filterQuery, setFilterQuery] = useState("")
+   console.log(filterQuery)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
@@ -44,14 +41,20 @@ export default function MyListings() {
 
   
   useEffect(() => {
+
+    const queryString = window.location.search;
+    const RetrivedchildKey = queryString.substring(1);
+    setFilterQuery(RetrivedchildKey);
+
+
     database
       .ref("properties")
       .once("value", (snapshot) => {
         if (snapshot.exists()) {
-          setListingsCheck(true);
+          setProfilesCheck(true);
           {setLoading(false)}
         } else {
-          setListingsCheck(false);
+          setProfilesCheck(false);
           {setLoading(false)}
         }
       })
@@ -64,30 +67,30 @@ export default function MyListings() {
   //get listing data
   useEffect(() => {
     database
-      .ref("properties")
-      .limitToLast(3)
+      .ref("My-Profile")
+      .orderByChild("filter")
+      .equalTo(filterQuery)
       .on("value", (snapshot) => {
         const items = [];
         snapshot.forEach((childSnapshot) => {
           var childKey = childSnapshot.key;
           var data = childSnapshot.val();
           items.push({
-            key: childKey,
-            title: data.title,
-            imageOneURL: data.imageOneURL,
-            bedrooms: data.bedrooms,
-            bathrooms: data.bathrooms,
+            name: data.name,           
             city: data.city,
-            per_month: data.per_month,
+            thumbnail: data.thumbnail,
+            homeSearch: data.homeSearch,
+            email: data.email,
           });
         });
-        setListings(items);
+        setProfiles(items);
       });
   }, [userUid]);
   //
 
   return (
     <>
+    <Navbar/>
 
     {/* Spinner */}  
     {loading==true ? <div className="sk-cube-grid">
@@ -102,41 +105,35 @@ export default function MyListings() {
   <div className="sk-cube sk-cube9"></div>
 </div> : ""}
 
-    <div className="featured-section">
-    {listingsCheck== true ?  <h2 className="text-center p-2 mt-4">Featured Homes</h2> : ""}
      
       <Container>
         <Row>
-          {listings.map((data, id) => (
+          {profiles.map((data, id) => (
            <Col sm={12} md={4} lg={4} key={uuidv4()}>
-
-           <Link to={{ pathname: '/property', search: `?${data.key}`, state: { fromDashboard: true }}}>
-
-           <Card className="mt-4">
+           <Card className="all-properties">
                 <Card.Img
                   variant="top"
-                  src={data.imageOneURL}
+                  src={data.thumbnail}
                   className="my-listings-thumbnail"
                 />
                 <Card.Body>
-                  <Card.Title className="text-dark">{data.title}</Card.Title>
-                  <Card.Text className="p-2 text-dark">
-                    <FontAwesomeIcon icon={faBed} /> {data.bedrooms}&nbsp;&nbsp;
-                    <FontAwesomeIcon icon={faShower} /> {data.bathrooms}&nbsp;&nbsp;
-                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {data.city}&nbsp;&nbsp;
-                    <span className="p-2">
-                      <FontAwesomeIcon icon={faRupeeSign} /> {data.per_month}
-                    </span>
+                  <Card.Title className="text-dark">{data.name}</Card.Title>
+                  <Card.Text className="text-dark">
+                  <p>
+                      {data.homeSearch == "Yes" ? "I'm Searching for homes": ""}
+                    </p>
+                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {data.city}&nbsp;
+                   <p className="pt-2">
+                   <a href={`mailto:${data.email}`} ><FontAwesomeIcon icon={faEnvelope} />&nbsp;{data.email}</a>
+                   </p>
                   </Card.Text>
                 </Card.Body>
               </Card>
-              </Link>
             </Col>
            
           ))}
         </Row>
       </Container>
-      </div>
       <br />
       <br />
     </>

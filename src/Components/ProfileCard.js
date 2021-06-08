@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Row, Col, Jumbotron, Spinner, Button} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { v4 as uuidv4 } from "uuid";
 import firebase from 'firebase'
 import { auth, database} from "../config";
@@ -17,6 +17,14 @@ export default function ProfileCard() {
     const [profileData, setProfileData] = useState([])
     //spinner
     const [loading, setLoading] = useState(true)
+    const [childKey, setChildkey] = useState("")
+    //
+    const [city, setCity] = useState("")
+    const [email, setEmail] = useState("")
+    const [name, setName] = useState("")
+    const [thumbnail, setThumbnail] = useState("")
+    const [filterQuery, setFilterQuery] = useState("")
+    const [yes, setYes] = useState("Yes")
 
 
     useEffect(() => {
@@ -48,11 +56,24 @@ useEffect(() => {
 
 //get profile data
 useEffect(() => {
-database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).once('value', (snapshot) => {
+database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).on('value', (snapshot) => {
     const items = [];
     snapshot.forEach((childSnapshot) => {
-      var childKey = childSnapshot.key;
+      var childkeyFirebase = childSnapshot.key;
+      setChildkey(childkeyFirebase)
       var childData = childSnapshot.val();
+      var city = childSnapshot.val().city;
+      var email = childSnapshot.val().email;
+      var name = childSnapshot.val().name;
+      var thumbnail = childSnapshot.val().thumbnail;
+      var filter = childSnapshot.val().filter;
+
+      setCity(city);
+      setEmail(email);
+      setName(name);
+      setThumbnail(thumbnail);
+      setFilterQuery(city);
+
       items.push(childData);
     });
     setProfileData(items)
@@ -77,8 +98,22 @@ database.ref("My-Profile").orderByChild("userUid").equalTo(userUid).once('value'
         <Col sm={12} lg={10} md={10}>
         <h1 className="display-4">{data.name}</h1>
         <p className="lead"><FontAwesomeIcon icon={faMapMarkerAlt}/> {data.city}</p>
+        <p><FontAwesomeIcon icon={faEnvelope}/> {data.email}</p>
         <hr className="my-2" />
         <p>{data.homeSearch=="Yes" ? "I'm Searching For Homes" : ""}</p>
+        
+        <p>{data.homeSearch =="Yes" ?<Button variant="warning"
+        onClick={()=>{
+          firebase.database().ref("My-Profile").child(childKey)
+        .set({ homeSearch: "No", city: city, email: email, name: name, thumbnail: thumbnail, userUid: userUid, filter: "No"})}
+        }
+        >Remove Status</Button> : 
+        <Button variant="success"
+        onClick={()=>{
+          firebase.database().ref("My-Profile").child(childKey)
+        .set({ homeSearch: "Yes", city: city, email: email, name: name, thumbnail: thumbnail, userUid: userUid, filter: city+yes})}
+        }
+        >Change Status To: I'm searching for homes</Button>}</p>
         </Col>
         </Row>
       </Jumbotron>

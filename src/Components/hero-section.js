@@ -3,11 +3,18 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import heroPic from '../pictures/hero.svg'
+import Vdo from '../pictures/video-background.mp4'
+import Thumbnail from '../pictures/cover.jpg'
 
 export default function hero_section() {
     return (
-        <div className="hero-section">
-        
+        <div>
+<div className="fullscreen-bg">
+<video autoPlay loop muted poster={Thumbnail} style={{position: "absolute", width:"100%", height:"70vh", objectFit:"cover", zIndex: "-1"}}>
+<source src={Vdo} type="video/mp4"></source>
+</video>
+</div>
+
 <Container className="container-fluid">
 <Row>
 

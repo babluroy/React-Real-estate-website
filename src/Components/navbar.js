@@ -60,19 +60,23 @@ const Logout = () => {
 
 
   return (
-  <Navbar bg="" expand="lg" className="navbar" 
+  <Navbar expand="lg" className="navbar" 
   style={{backgroundColor: pos === "top" ? "" : "rgb(227, 239, 240)" }}
   >
   <Link to="/"><Navbar.Brand  className={pos === "top" ? "text-light brand-name": "text-dark brand-name"}>{companyName}</Navbar.Brand></Link>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
+    <Nav className="me-auto">
       <Nav.Link as={Link} to="/"
       className={pos === "top" ? "text-light": "text-dark"}
       >Home</Nav.Link>
+      {authState ? (
+       <React.Fragment>
       <Nav.Link as={Link} to="/personal-rooms" className={pos === "top" ? "text-light": "text-dark"}>Personal Rooms</Nav.Link>
       <Nav.Link as={Link} to="/family-apartments" className={pos === "top" ? "text-light": "text-dark"}>Family Apartments</Nav.Link>
       <Nav.Link as={Link} to="/vacation-villas" className={pos === "top" ? "text-light": "text-dark"}>Villas for Vacation</Nav.Link>
+      </React.Fragment>
+      ):""}
     </Nav>
     <Navbar.Collapse className="justify-content-end">
     <NavDropdown title={<FontAwesomeIcon icon={faUserCircle} size="lg"
@@ -88,8 +92,8 @@ const Logout = () => {
         </>
         ) : (
           <>
-        <Link to="/"><NavDropdown.Item>Login</NavDropdown.Item></Link>
-        <Link to="/"><NavDropdown.Item>Signup</NavDropdown.Item></Link>
+        <NavDropdown.Item><Nav.Link as={Link} to="/">Login</Nav.Link></NavDropdown.Item>
+        <NavDropdown.Item><Nav.Link as={Link} to="/">Signup</Nav.Link></NavDropdown.Item>
         <NavDropdown.Divider />
         </>
         )}

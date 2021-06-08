@@ -21,9 +21,9 @@ h2 {
   letter-spacing: 2px;
 }
 
-.hero-section {
+/* .hero-section {
   z-index: 100;
-}
+} */
 
 .hero-text {
   font-family: "Crete Round", serif;
@@ -39,18 +39,21 @@ h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 540;
 }
-
+/* navbar menu toogle sm */
+@media only screen and (max-width: 600px) {
+  .show {
+    background-color: rgb(172, 183, 187);
+    color: #fff;
+    padding: 20px;
+  }
+}
 a:link {
   text-decoration: none;
 }
-
+/* 
 .hero-section {
-  background: 
-  /* top, transparent red, faked with gradient */ linear-gradient(
-      rgba(34, 30, 30, 0.45),
-      rgba(71, 58, 58, 0.45)
-    ),
-    /* bottom, image */ url("pictures/cover.jpg");
+  background: linear-gradient(rgba(34, 30, 30, 0.45), rgba(71, 58, 58, 0.45)),
+    url("pictures/cover.jpg");
 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -68,6 +71,21 @@ a:link {
   .hero-section {
     min-height: 60vh;
   }
+} */
+
+.hero-video {
+  background: linear-gradient(rgba(34, 30, 30, 0.45), rgba(71, 58, 58, 0.45));
+  height: 70vh;
+}
+.fullscreen-bg::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.25);
+  height: 70vh;
 }
 
 .hero-pic {
@@ -79,6 +97,9 @@ a:link {
     font-size: 25px;
     text-align: center;
   }
+}
+.featured-section {
+  margin-top: 30vh;
 }
 
 .featured-images {
@@ -353,3 +374,29 @@ a:link {
 .file-input.-chosen > .label {
   opacity: 1;
 }
+.fa-times-circle {
+  color: rgb(228, 22, 22);
+}
+.fa-check-square {
+  color: #15c56d;
+}
+/* Vertical center */
+.outer {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+}
+/*End of vertical center */

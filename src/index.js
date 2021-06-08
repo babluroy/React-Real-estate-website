@@ -18,6 +18,7 @@ import PersonalRooms from './pages/PersonalRooms';
 import FamilyApartments from './pages/FamilyApartments';
 import VacationVillas from './pages/VacationVillas';
 import ScrollToTop from './Components/ScrollToTop';
+import PublicProfilePage from './pages/PublicProfilePage';
 
 
 const routing = (
@@ -38,6 +39,7 @@ const routing = (
     <Route exact path="/personal-rooms" component={PersonalRooms}/>
     <Route exact path="/family-apartments" component={FamilyApartments}/>
     <Route exact path="/vacation-villas" component={VacationVillas}/>
+    <Route exact path="/find-roommates" component={PublicProfilePage}/>
   </Router>
 )
 

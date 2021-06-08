@@ -107,7 +107,19 @@ export default function MyBookingsSection() {
 </div> : ""}
        
 
-       {listingsCheck== true ?  <h2 className="text-center p-2 mt-4">My Bookings</h2> : ""}
+       {listingsCheck== true ?  <h2 className="text-center p-2 mt-4">My Bookings</h2> : 
+       
+       <Container>
+      <div className="outer text-center">
+      <div className="middle">
+      <div className="inner h5">
+       You have not done any bookings
+       </div>
+       </div>
+       </div>
+       </Container>
+
+       }
      
      <Container>
        <Row>

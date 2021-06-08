@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Container, Col, Row } from "react-bootstrap";
+import { Card, Container, Col, Row, Button} from "react-bootstrap";
 import pic1 from '../pictures/undraw_people_tax5.svg'
 import pic2 from '../pictures/undraw_celebration_0jvk.svg'
 import pic3 from '../pictures/undraw_fans_gr54.svg'
@@ -41,7 +41,7 @@ export default function FindRoommatesContent() {
               A three bedroom apartment in banana island is a piece of cake. You & your friends can combine your money to rent well built & furnished apartments.
               </Card.Text>
             </Card.Body>
-          </Card>
+          </Card>          
           </Col>
           </Row>
         </Container>

@@ -16,8 +16,9 @@ import {
   faShower,
   faMapMarkerAlt,
   faHome,
-  faUser,
   faArrowCircleRight,
+  faCheckSquare,
+  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import firebase from "firebase";
 import { auth, database } from "../config";
@@ -79,6 +80,13 @@ export default function SinglePropertyPage() {
         var title_head = snapshot.val().title;
         var city_vr = snapshot.val().city;
         var address_vr = snapshot.val().address;
+        var livingRoom = snapshot.val().livingRoom;
+        var internet = snapshot.val().internet;
+        var gym = snapshot.val().gym;
+        var parking = snapshot.val().parking;
+        var ac = snapshot.val().ac;
+        var gatedSecurity = snapshot.val().gatedSecurity;
+        var waterSupply = snapshot.val().waterSupply;
         setHostUid(hostUid);
         setImageUrl(img)
         setPrice(amount)
@@ -104,6 +112,14 @@ export default function SinglePropertyPage() {
           category: val.category,
           about: val.about,
           name: val.name,
+
+          livingRoom: livingRoom,
+          internet: internet,
+          gym: gym,
+          parking: parking,
+          ac: ac,
+          gatedSecurity: gatedSecurity,
+          waterSupply: waterSupply,
         });
         setListings(items);
       });
@@ -227,7 +243,7 @@ export default function SinglePropertyPage() {
                     <Col lg={4} md={4} sm={4} className="mt-2">
                       <Card>
                         <Card.Body>
-                          <FontAwesomeIcon icon={faBed} /> Bathrooms:
+                          <FontAwesomeIcon icon={faShower} /> Bathrooms:
                           {data.bathrooms}
                         </Card.Body>
                       </Card>
@@ -264,6 +280,62 @@ export default function SinglePropertyPage() {
                         </p>
                       </Col>
                     </Row>
+
+                    <h4 className="mt-4">Amenities</h4>
+                    <Row>
+                      <Col sm={12} lg={3} md={3}>
+                      <p className="text-lead">
+                      Living Room:&nbsp;
+                        {data.livingRoom == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                         
+                        </p>
+                      </Col>
+                      <Col sm={12} lg={3} md={3}>
+                      <p className="text-lead">
+                     Internet:&nbsp;
+                        {data.internet == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                          
+                        </p>
+                      </Col>
+                      <Col sm={12} lg={3} md={3}>
+                      <p className="text-lead">
+                     Gym:&nbsp;
+                        {data.gym == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                          
+                        </p>
+                      </Col>
+                      <Col sm={12} lg={3} md={3}>
+                      <p className="text-lead">
+                     Parking Space:&nbsp;
+                        {data.parking == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                          
+                        </p>
+                      </Col>
+                    </Row>
+
+                    <Row>
+
+                    <Col sm={12} lg={3} md={3}>
+                      <p className="text-lead">
+                     Air Conditioner:&nbsp;
+                        {data.ac == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                        </p>
+                        </Col>
+                    <Col sm={12} lg={3} md={3}>
+                      <p className="text-lead">
+                     Gated Security:&nbsp;
+                        {data.gatedSecurity == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                        </p>
+                        </Col>
+                    <Col sm={12} lg={3} md={3}>
+                      <p className="text-lead">
+                     Water Supply:&nbsp;
+                        {data.waterSupply == "Yes" ? <FontAwesomeIcon icon={faCheckSquare} /> : <FontAwesomeIcon icon={faTimesCircle} />}
+                        </p>
+                        </Col>
+
+                    </Row>
+
 
                     {/*TODO*/}
                     {/* <iframe
@@ -366,11 +438,15 @@ export default function SinglePropertyPage() {
                       </Button>
                     </Form>
                   </Card.Body>
-                  {/* <Card.Footer className="text-muted">
-                    <Button variant="warning">
+
+                  {/* TODO: */}
+                  
+                  <Card.Footer className="text-muted">
+                    <Link to={`/find-roommates?${data.city}Yes`}><Button variant="warning">
                       Find Roommates in {data.city}
-                    </Button>
-                  </Card.Footer> */}
+                    </Button></Link>
+                  </Card.Footer>
+
                 </Card>
               </Col>
             </Row>
