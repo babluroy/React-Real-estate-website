@@ -61,7 +61,7 @@ const Logout = () => {
 
   return (
   <Navbar expand="lg" className="navbar" 
-  style={{backgroundColor: pos === "top" ? "" : "rgb(227, 239, 240)" }}
+  style={{backgroundColor: pos === "top" ? "" : "#fff", boxShadow: pos === "top" ? "" : "0.8px 0.8px 0.8px #000"}}
   >
   <Link to="/"><Navbar.Brand  className={pos === "top" ? "text-light brand-name": "text-dark brand-name"}>{companyName}</Navbar.Brand></Link>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />

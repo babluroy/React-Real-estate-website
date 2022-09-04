@@ -124,7 +124,7 @@ export default function HoneBookings() {
      <Container>
        <Row>
          {listings.map((data, id) => (
-          <Col sm={12} md={4} lg={4} key={uuidv4()}>
+          <Col sm={12} md={4} lg={4} key={id}>
 
           <Link to={{ pathname: '/property', search: `?${data.key}`, state: { fromDashboard: true }}}>
 

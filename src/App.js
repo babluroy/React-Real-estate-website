@@ -5,15 +5,13 @@ import {UserContext} from './context/UserContext'
 import Signup from './pages/Signup'
 
 
-
 function App() {
 
   const [user, setUser] = useState(null)
-  {console.log(user)}
   
   return (
   <UserContext.Provider value={{user, setUser}}>
-  <Signup/>
+     <Signup/>
    </UserContext.Provider>
   );
 

@@ -85,7 +85,7 @@ a:link {
   left: 0;
   content: "";
   background-color: rgba(0, 0, 0, 0.25);
-  height: 70vh;
+  height: 80vh;
 }
 
 .hero-pic {
@@ -98,8 +98,12 @@ a:link {
     text-align: center;
   }
 }
+
+.hero-section{
+}
+
 .featured-section {
-  margin-top: 30vh;
+  margin-top: 35vh;
 }
 
 .featured-images {
@@ -279,7 +283,13 @@ a:link {
   min-height: 370px;
 }
 .category-cards:hover {
-  background-color: #51e1ed;
+  background-color: #242B2E;
+}
+.category-cards:hover .card-title{
+  color: #fff;
+}
+.category-cards:hover p{
+  color: #fff;
 }
 .category-img {
   height: 220px;
